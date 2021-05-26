@@ -22,23 +22,26 @@ Pod::Spec.new do |s|
 
   s.subspec 'Types' do |ss|
     ss.source_files = 
-      'Sources/Types/*.swift',
-      'Sources/Generated/Enums/*.swift',
-      'Sources/Generated/Protobuf/*.swift'
+      'swift/Sources/Types/*.swift',
+      'swift/Sources/Generated/Enums/*.swift',
+      'swift/Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
 
   s.subspec 'Core' do |ss|
+    ss.preserve_paths = 'build/ios/*.a'
+    ss.vendored_libraries = 'build/ios/*.a'
 #     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
 #     include_dir = 'build/local/include'
     ss.vendored_frameworks = '*.xcframework'
-    ss.exclude_files = 'Sources/Generated/WalletCore.h'
+    ss.exclude_files = 'swift/Sources/Generated/WalletCore.h'
+
     ss.source_files =
 #       'src/**/*.{c,cc,cpp,h}',
       'include/**/*.h',
-      'Sources/*.{swift,h,m,cpp}',
-      'Sources/Extensions/*.swift',
-      'Sources/Generated/*.{swift,h}'
+      'swift/Sources/*.{swift,h,m,cpp}',
+      'swift/Sources/Extensions/*.swift',
+      'swift/Sources/Generated/*.{swift,h}'
 #       'trezor-crypto/crypto/**/*.{c,h}',
 #       'trezor-crypto/include/**/*.{h}',
 #       "#{protobuf_source_dir}/src/google/protobuf/any.cc",
@@ -132,7 +135,16 @@ Pod::Spec.new do |s|
 
     ss.public_header_files =
       'include/**/*.h',
-      'Sources/*.h'
+      'swift/Sources/*.h'
+    ss.xcconfig = {
+        'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
+    }
+    ss.pod_target_xcconfig = {
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+    }
+    ss.user_target_xcconfig = { 
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' 
+    }
     
 #     ss.preserve_paths =
 #       'trezor-crypto/crypto/*.{table}',
