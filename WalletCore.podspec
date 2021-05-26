@@ -29,8 +29,6 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core' do |ss|
-    ss.preserve_paths = 'build/ios/*.a'
-    ss.vendored_libraries = 'build/ios/*.a'
 #     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
 #     include_dir = 'build/local/include'
     ss.vendored_frameworks = '*.xcframework'
@@ -168,6 +166,6 @@ Pod::Spec.new do |s|
 #       'OTHER_CFLAGS' => '-DHAVE_PTHREAD=1',
 #       'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
 #     }
-    ss.dependency 'WalletCore/Types'
+    ss.dependency 'TrustWalletCore/Types'
   end
 end
