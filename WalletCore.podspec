@@ -1,7 +1,7 @@
-version = '2.6.5'
+# version = '2.6.5'
 
 Pod::Spec.new do |s|
-  s.name         = 'WalletCore'
+  s.name         = 'TrustWalletCore'
   s.version      = version
   s.summary      = 'Trust Wallet core data structures and algorithms.'
   s.homepage     = 'https://github.com/trustwallet/wallet-core'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.module_name  = 'WalletCore'
   
   s.ios.deployment_target = '12.0'
-  s.osx.deployment_target = '10.12'
+#   s.osx.deployment_target = '10.12'
   s.swift_version = '5.1'
   s.libraries = 'c++'
 
@@ -22,9 +22,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'Types' do |ss|
     ss.source_files = 
-      'swift/Sources/Types/*.swift',
-      'swift/Sources/Generated/Enums/*.swift',
-      'swift/Sources/Generated/Protobuf/*.swift'
+      'Sources/Types/*.swift',
+      'Sources/Generated/Enums/*.swift',
+      'Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
 
@@ -36,9 +36,9 @@ Pod::Spec.new do |s|
     ss.source_files =
 #       'src/**/*.{c,cc,cpp,h}',
       'include/**/*.h',
-      'swift/Sources/*.{swift,h,m,cpp}',
-      'swift/Sources/Extensions/*.swift',
-      'swift/Sources/Generated/*.{swift,h}',
+      'Sources/*.{swift,h,m,cpp}',
+      'Sources/Extensions/*.swift',
+      'Sources/Generated/*.{swift,h}'
 #       'trezor-crypto/crypto/**/*.{c,h}',
 #       'trezor-crypto/include/**/*.{h}',
 #       "#{protobuf_source_dir}/src/google/protobuf/any.cc",
@@ -132,9 +132,8 @@ Pod::Spec.new do |s|
 
     ss.public_header_files =
       'include/**/*.h',
-      'swift/Sources/*.h'
-    ss.libraries = 'c++'
-
+      'Sources/*.h'
+    
 #     ss.preserve_paths =
 #       'trezor-crypto/crypto/*.{table}',
 #       "#{protobuf_source_dir}/src/**/*.{h,inc}",
@@ -157,6 +156,6 @@ Pod::Spec.new do |s|
 #       'OTHER_CFLAGS' => '-DHAVE_PTHREAD=1',
 #       'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
 #     }
-    ss.dependency 'WalletCore/Types'
+    ss.dependency 'TrustWalletCore/Types'
   end
 end
