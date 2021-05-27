@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |ss|  
 #     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
-    include_dir = 'include'
+#     include_dir = 'include'
     ss.vendored_frameworks = '*.xcframework'
     ss.source_files =
       'src/**/*.{c,cc,cpp,h}',
