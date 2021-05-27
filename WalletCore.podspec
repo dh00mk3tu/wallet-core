@@ -21,21 +21,26 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Types' do |ss|
-    ss.source_files = 
+    ss.source_files =
+      'Sources/Types/*.swift',
+      'Sources/Generated/Enums/*.swift',
+      'Sources/Generated/Protobuf/*.swift'
       'swift/Sources/Types/*.swift',
       'swift/Sources/Generated/Enums/*.swift',
       'swift/Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
 
-  s.subspec 'Core' do |ss|
-     ss.vendored_frameworks = '*.xcframework'
-
+  s.subspec 'Core' do |ss|  
     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
     include_dir = 'build/local/include'
+    ss.vendored_frameworks = '*.xcframework'
     ss.source_files =
       'src/**/*.{c,cc,cpp,h}',
       'include/**/*.h',
+      'Sources/*.{swift,h,m,cpp}',
+      'Sources/Extensions/*.swift',
+      'Sources/Generated/*.{swift,h}'
       'swift/Sources/*.{swift,h,m,cpp}',
       'swift/Sources/Extensions/*.swift',
       'swift/Sources/Generated/*.{swift,h}',
@@ -128,10 +133,13 @@ Pod::Spec.new do |s|
       'trezor-crypto/crypto/tests',
       'trezor-crypto/crypto/tools',
       'trezor-crypto/crypto/rand.c',
+      'Sources/Generated/WalletCore.h',
       'swift/Sources/Generated/WalletCore.h'
+    
 
     ss.public_header_files =
       'include/**/*.h',
+      'Sources/*.h'
       'swift/Sources/*.h'
 
 #     ss.preserve_paths =
@@ -140,22 +148,22 @@ Pod::Spec.new do |s|
 #       "#{include_dir}/nlohmann/**/*.hpp",
 #       'src/proto/*.proto'
 
-    ss.xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(inherited) ' \
-        '$(SRCROOT)/../../wallet-core ' \
-        '${SRCROOT}/../../trezor-crypto/crypto ',
-      'SYSTEM_HEADER_SEARCH_PATHS' => '$(inherited) ' \
-        '/usr/local/include ' \
-        '${SRCROOT}/../../include ' \
-        '${SRCROOT}/../../../build/local/include ' \
-        "${SRCROOT}/../../trezor-crypto/include " \
-        "${SRCROOT}/../../protobuf ",
-      'GCC_WARN_UNUSED_FUNCTION' => 'NO',
-      'GCC_WARN_64_TO_32_BIT_CONVERSION' => 'NO',
-      'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17',
-      'OTHER_CFLAGS' => '-DHAVE_PTHREAD=1',
-      'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
-    }
+#     ss.xcconfig = {
+#       'HEADER_SEARCH_PATHS' => '$(inherited) ' \
+#         '$(SRCROOT)/../../wallet-core ' \
+#         '${SRCROOT}/../../trezor-crypto/crypto ',
+#       'SYSTEM_HEADER_SEARCH_PATHS' => '$(inherited) ' \
+#         '/usr/local/include ' \
+#         '${SRCROOT}/../../include ' \
+#         '${SRCROOT}/../../../build/local/include ' \
+#         "${SRCROOT}/../../trezor-crypto/include " \
+#         "${SRCROOT}/../../protobuf ",
+#       'GCC_WARN_UNUSED_FUNCTION' => 'NO',
+#       'GCC_WARN_64_TO_32_BIT_CONVERSION' => 'NO',
+#       'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17',
+#       'OTHER_CFLAGS' => '-DHAVE_PTHREAD=1',
+#       'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
+#     }
     ss.dependency 'WalletCore/Types'
   end
 end
