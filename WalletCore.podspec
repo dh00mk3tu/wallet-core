@@ -142,11 +142,11 @@ Pod::Spec.new do |s|
       'Sources/*.h'
 #       'swift/Sources/*.h'
 
-#     ss.preserve_paths =
-#       'trezor-crypto/crypto/*.{table}',
-#       "#{protobuf_source_dir}/src/**/*.{h,inc}",
-#       "#{include_dir}/nlohmann/**/*.hpp",
-#       'src/proto/*.proto'
+    ss.preserve_paths =
+      'trezor-crypto/crypto/*.{table}',
+      "#{protobuf_source_dir}/src/**/*.{h,inc}",
+      "#{include_dir}/nlohmann/**/*.hpp",
+      'src/proto/*.proto'
 
 #     ss.xcconfig = {
 #       'HEADER_SEARCH_PATHS' => '$(inherited) ' \
