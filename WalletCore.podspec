@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     ss.source_files =
       'Sources/Types/*.swift',
       'Sources/Generated/Enums/*.swift',
-      'Sources/Generated/Protobuf/*.swift'
+      'Sources/Generated/Protobuf/*.swift',
       'swift/Sources/Types/*.swift',
       'swift/Sources/Generated/Enums/*.swift',
       'swift/Sources/Generated/Protobuf/*.swift'
