@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.module_name  = 'WalletCore'
   
   s.ios.deployment_target = '12.0'
-  s.osx.deployment_target = '10.12'
+#   s.osx.deployment_target = '10.12'
   s.swift_version = '5.1'
   s.libraries = 'c++'
 
@@ -21,29 +21,25 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Types' do |ss|
-    ss.source_files =
+    ss.source_files = 
       'Sources/Types/*.swift',
       'Sources/Generated/Enums/*.swift',
       'Sources/Generated/Protobuf/*.swift'
-#       'swift/Sources/Types/*.swift',
-#       'swift/Sources/Generated/Enums/*.swift',
-#       'swift/Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
 
-  s.subspec 'Core' do |ss|  
+  s.subspec 'Core' do |ss|
 #     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
 #     include_dir = 'build/local/include'
     ss.vendored_frameworks = '*.xcframework'
+    ss.exclude_files = 'Sources/Generated/WalletCore.h'
+
     ss.source_files =
-      'src/**/*.{c,cc,cpp,h}',
+#       'src/**/*.{c,cc,cpp,h}',
       'include/**/*.h',
       'Sources/*.{swift,h,m,cpp}',
       'Sources/Extensions/*.swift',
       'Sources/Generated/*.{swift,h}'
-#       'swift/Sources/*.{swift,h,m,cpp}',
-#       'swift/Sources/Extensions/*.swift',
-#       'swift/Sources/Generated/*.{swift,h}'
 #       'trezor-crypto/crypto/**/*.{c,h}',
 #       'trezor-crypto/include/**/*.{h}',
 #       "#{protobuf_source_dir}/src/google/protobuf/any.cc",
@@ -127,21 +123,27 @@ Pod::Spec.new do |s|
 #       "#{protobuf_source_dir}/src/google/protobuf/wire_format.cc",
 #       "#{protobuf_source_dir}/src/google/protobuf/wire_format_lite.cc",
 #       "#{protobuf_source_dir}/src/google/protobuf/wrappers.pb.cc"
-    ss.exclude_files = 
+#     ss.exclude_files = 
 #       'trezor-crypto/include/TrezorCrypto/base58.h',
 #       'trezor-crypto/crypto/monero',
 #       'trezor-crypto/crypto/tests',
 #       'trezor-crypto/crypto/tools',
 #       'trezor-crypto/crypto/rand.c',
-        'Sources/Generated/WalletCore.h'
 #       'swift/Sources/Generated/WalletCore.h'
-    
 
     ss.public_header_files =
       'include/**/*.h',
       'Sources/*.h'
-#       'swift/Sources/*.h'
-
+    ss.xcconfig = {
+        'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
+    }
+    ss.pod_target_xcconfig = {
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+    }
+    ss.user_target_xcconfig = { 
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' 
+    }
+    
 #     ss.preserve_paths =
 #       'trezor-crypto/crypto/*.{table}',
 #       "#{protobuf_source_dir}/src/**/*.{h,inc}",
