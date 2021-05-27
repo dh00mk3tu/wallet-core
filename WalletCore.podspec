@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
       'Sources/Generated/*.{swift,h}'
       'swift/Sources/*.{swift,h,m,cpp}',
       'swift/Sources/Extensions/*.swift',
-      'swift/Sources/Generated/*.{swift,h}',
+      'swift/Sources/Generated/*.{swift,h}'
 #       'trezor-crypto/crypto/**/*.{c,h}',
 #       'trezor-crypto/include/**/*.{h}',
 #       "#{protobuf_source_dir}/src/google/protobuf/any.cc",
@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
 
     ss.public_header_files =
       'include/**/*.h',
-      'Sources/*.h'
+      'Sources/*.h',
       'swift/Sources/*.h'
 
 #     ss.preserve_paths =
