@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
       'include/**/*.h',
       'Sources/*.{swift,h,m,cpp}',
       'Sources/Extensions/*.swift',
-      'Sources/Generated/*.{swift,h}'
+      'Sources/Generated/*.{swift,h}',
       'swift/Sources/*.{swift,h,m,cpp}',
       'swift/Sources/Extensions/*.swift',
       'swift/Sources/Generated/*.{swift,h}'
