@@ -24,10 +24,10 @@ Pod::Spec.new do |s|
     ss.source_files =
       'Sources/Types/*.swift',
       'Sources/Generated/Enums/*.swift',
-      'Sources/Generated/Protobuf/*.swift',
-      'swift/Sources/Types/*.swift',
-      'swift/Sources/Generated/Enums/*.swift',
-      'swift/Sources/Generated/Protobuf/*.swift'
+      'Sources/Generated/Protobuf/*.swift'
+#       'swift/Sources/Types/*.swift',
+#       'swift/Sources/Generated/Enums/*.swift',
+#       'swift/Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
 
@@ -40,10 +40,10 @@ Pod::Spec.new do |s|
       'include/**/*.h',
       'Sources/*.{swift,h,m,cpp}',
       'Sources/Extensions/*.swift',
-      'Sources/Generated/*.{swift,h}',
-      'swift/Sources/*.{swift,h,m,cpp}',
-      'swift/Sources/Extensions/*.swift',
-      'swift/Sources/Generated/*.{swift,h}'
+      'Sources/Generated/*.{swift,h}'
+#       'swift/Sources/*.{swift,h,m,cpp}',
+#       'swift/Sources/Extensions/*.swift',
+#       'swift/Sources/Generated/*.{swift,h}'
 #       'trezor-crypto/crypto/**/*.{c,h}',
 #       'trezor-crypto/include/**/*.{h}',
 #       "#{protobuf_source_dir}/src/google/protobuf/any.cc",
@@ -128,19 +128,19 @@ Pod::Spec.new do |s|
 #       "#{protobuf_source_dir}/src/google/protobuf/wire_format_lite.cc",
 #       "#{protobuf_source_dir}/src/google/protobuf/wrappers.pb.cc"
     ss.exclude_files = 
-      'trezor-crypto/include/TrezorCrypto/base58.h',
-      'trezor-crypto/crypto/monero',
-      'trezor-crypto/crypto/tests',
-      'trezor-crypto/crypto/tools',
-      'trezor-crypto/crypto/rand.c',
-      'Sources/Generated/WalletCore.h',
-      'swift/Sources/Generated/WalletCore.h'
+#       'trezor-crypto/include/TrezorCrypto/base58.h',
+#       'trezor-crypto/crypto/monero',
+#       'trezor-crypto/crypto/tests',
+#       'trezor-crypto/crypto/tools',
+#       'trezor-crypto/crypto/rand.c',
+      'Sources/Generated/WalletCore.h'
+#       'swift/Sources/Generated/WalletCore.h'
     
 
     ss.public_header_files =
       'include/**/*.h',
-      'Sources/*.h',
-      'swift/Sources/*.h'
+      'Sources/*.h'
+#       'swift/Sources/*.h'
 
 #     ss.preserve_paths =
 #       'trezor-crypto/crypto/*.{table}',
