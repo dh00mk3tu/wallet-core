@@ -29,11 +29,13 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core' do |ss|
-#     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
-#     include_dir = 'build/local/include'
+     ss.vendored_frameworks = '*.xcframework'
+
+    protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
+    include_dir = 'build/local/include'
     ss.source_files =
-      'src/**/*.{c,cc,cpp,h}',
-      'include/**/*.h',
+#       'src/**/*.{c,cc,cpp,h}',
+#       'include/**/*.h',
       'swift/Sources/*.{swift,h,m,cpp}',
       'swift/Sources/Extensions/*.swift',
       'swift/Sources/Generated/*.{swift,h}',
