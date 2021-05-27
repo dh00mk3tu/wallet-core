@@ -27,11 +27,12 @@ Pod::Spec.new do |s|
       'Sources/Generated/Protobuf/*.swift'
     ss.dependency 'SwiftProtobuf'
   end
-
+  
+  s.vendored_frameworks = 'WalletCoreTypes.xcframework', 'SwiftProtobuf.xcframework'
   s.subspec 'Core' do |ss|
 #     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
 #     include_dir = 'build/local/include'
-    ss.vendored_frameworks = '*.xcframework'
+#     ss.vendored_frameworks = '*.xcframework'
     ss.exclude_files = 'Sources/Generated/WalletCore.h'
 
     ss.source_files =
@@ -134,15 +135,15 @@ Pod::Spec.new do |s|
     ss.public_header_files =
       'include/**/*.h',
       'Sources/*.h'
-    ss.xcconfig = {
-        'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
-    }
-    ss.pod_target_xcconfig = {
-      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-    }
-    ss.user_target_xcconfig = { 
-      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' 
-    }
+#     ss.xcconfig = {
+#         'OTHER_LDFLAGS' => '$(inherited) -fprofile-instr-generate'
+#     }
+#     ss.pod_target_xcconfig = {
+#       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+#     }
+#     ss.user_target_xcconfig = { 
+#       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' 
+#     }
     
 #     ss.preserve_paths =
 #       'trezor-crypto/crypto/*.{table}',
