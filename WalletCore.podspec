@@ -32,8 +32,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core' do |ss|  
-#     protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
-#     include_dir = 'include'
+    protobuf_source_dir = 'build/local/src/protobuf/protobuf-3.14.0'
+    include_dir = 'build/local/include'
     ss.vendored_frameworks = '*.xcframework'
     ss.source_files =
       'src/**/*.{c,cc,cpp,h}',
@@ -133,7 +133,7 @@ Pod::Spec.new do |s|
 #       'trezor-crypto/crypto/tests',
 #       'trezor-crypto/crypto/tools',
 #       'trezor-crypto/crypto/rand.c',
-      'Sources/Generated/WalletCore.h'
+        'Sources/Generated/WalletCore.h'
 #       'swift/Sources/Generated/WalletCore.h'
     
 
